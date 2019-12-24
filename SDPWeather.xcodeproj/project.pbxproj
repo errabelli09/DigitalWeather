@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40A8BD5F23B23DB400119BA9 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A8BD5E23B23DB400119BA9 /* HomeTableViewController.swift */; };
 		40EB94FD23B22622007E961A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EB94FC23B22622007E961A /* AppDelegate.swift */; };
 		40EB94FF23B22622007E961A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EB94FE23B22622007E961A /* ViewController.swift */; };
 		40EB950223B22622007E961A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40EB950023B22622007E961A /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40A8BD5E23B23DB400119BA9 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		40EB94F923B22622007E961A /* SDPWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDPWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40EB94FC23B22622007E961A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40EB94FE23B22622007E961A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				40EB94FC23B22622007E961A /* AppDelegate.swift */,
 				40EB94FE23B22622007E961A /* ViewController.swift */,
+				40A8BD5E23B23DB400119BA9 /* HomeTableViewController.swift */,
 				40EB950023B22622007E961A /* Main.storyboard */,
 				40EB950323B2263B007E961A /* Assets.xcassets */,
 				40EB950523B2263B007E961A /* LaunchScreen.storyboard */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A8BD5F23B23DB400119BA9 /* HomeTableViewController.swift in Sources */,
 				40EB94FF23B22622007E961A /* ViewController.swift in Sources */,
 				40EB94FD23B22622007E961A /* AppDelegate.swift in Sources */,
 			);
