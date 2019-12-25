@@ -196,13 +196,16 @@
 				TargetAttributes = {
 					40EB94F823B22622007E961A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 					};
 					40EB950C23B2263C007E961A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = 40EB94F823B22622007E961A;
 					};
 					40EB951723B2263C007E961A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = 40EB94F823B22622007E961A;
 					};
 				};
@@ -444,7 +447,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.capgemini.SDPWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -461,7 +464,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.capgemini.SDPWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -480,7 +483,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.capgemini.SDPWeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SDPWeather.app/SDPWeather";
 			};
@@ -500,7 +503,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.capgemini.SDPWeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SDPWeather.app/SDPWeather";
 			};
@@ -519,7 +522,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.capgemini.SDPWeatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SDPWeather;
 			};
@@ -538,7 +541,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.capgemini.SDPWeatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SDPWeather;
 			};
