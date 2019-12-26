@@ -1,17 +1,17 @@
 //
-//  WeatherManager.swift
+//  SearchManager.swift
 //  SDPWeather
 //
-//  Created by Errabelli Anil on 26/12/19.
+//  Created by Anil Errabelli on 26/12/19.
 //  Copyright © 2019 Errabelli Anil. All rights reserved.
 //
 
 import Foundation
 
-class WeatherManager {
+class SearchManager {
     
-    static func getWeather(for cityLatLong: String, _ completion: @escaping (_ weather: dataWeather?) -> Void) {
-        guard let url = URL(string: NetworkManager.APIURL.cityWeatherData(for: cityLatLong)) else {
+    static func getCity(for city: String, _ completion: @escaping (_ searchCity: searchResults?) -> Void) {
+        guard let url = URL(string: NetworkManager.APIURL.cityCompletion(for: city)) else {
             completion(nil)
             return
         }
@@ -22,9 +22,9 @@ class WeatherManager {
             }
             
             do {
-                let decoder = JSONDecoder()                
-                let weatherObject = try decoder.decode(dataWeather.self, from: data)
-                completion(weatherObject)
+                let decoder = JSONDecoder()
+                let searchResultsObject = try decoder.decode(searchResults.self, from: data)
+                completion(searchResultsObject)
             } catch {
                 print(error.localizedDescription)
                 completion(nil)

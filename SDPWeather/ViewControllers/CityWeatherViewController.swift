@@ -19,30 +19,39 @@ class CityWeatherViewController: UIViewController {
     
     //MARK:- Properties
 
-    var latLong = "51.5171,-0.1062"
+    var latLong = String()
     var city: String?
 
     
-    var weather: dataWeather?
+    var weather: [currentWeatherCondition]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+    
+        self.title = city
         getWeather()
     }
     
     private func getWeather() {
         WeatherManager.getWeather(for: latLong) { (weather) in
             DispatchQueue.main.async {
-                self.weather = weather
+                self.weather = weather?.data.current_condition
                 
-                print(self.weather)
+                print(self.weather as Any)
                 
-//                let cu = self.weather?.data.currentWeathercondition
-//                
-//                self.currentWeather.text =
+                self.currentWeather.text = self.weather?[0].weatherDesc[0].value
+                self.currentHumidity.text = (self.weather?[0].humidity ?? "0") + "%"
+                self.currentTemperature.text = (self.weather?[0].temp_C ?? "0") + "°C"
+                let url = URL(string: (self.weather?[0].weatherIconUrl[0].value)!)
+
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                    DispatchQueue.main.async {
+                        self.weatherImageView.image = UIImage(data: data!)
+                    }
+                }
             }
         }
     }

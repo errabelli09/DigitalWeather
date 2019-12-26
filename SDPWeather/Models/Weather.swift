@@ -9,24 +9,26 @@
 import Foundation
 
 struct dataWeather: Codable {
+    var data: dataWeatherTime
     
-    var data: [currentWeathercondition]
+}
+struct dataWeatherTime: Codable {
     
-    struct currentWeathercondition: Codable {
-        
-        var weatherIconUrl: [weatherImage]
-        var temp_C: String
-        var humidity: String
-        var weatherDesc: [currentWeatherDesc]
-        
-        struct currentWeatherDesc: Codable {
-            var value: String
-        }
-        struct weatherImage: Codable {
-            var value: String
-        }
+    var current_condition: [currentWeatherCondition]
+    
+}
+struct currentWeatherCondition: Codable {
+    
+    var weatherIconUrl: [weatherImage]
+    var temp_C: String
+    var humidity: String
+    var weatherDesc: [currentWeatherDesc]
+    
+    struct currentWeatherDesc: Codable {
+        var value: String
+    }
+    struct weatherImage: Codable {
+        var value: String
     }
 }
-
-
     
