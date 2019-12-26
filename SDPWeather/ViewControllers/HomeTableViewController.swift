@@ -9,15 +9,15 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
-    
-    //MARK:- Outlets
-    
+        
     
     //MARK:- Properties
     
     var filteredArray = [[String:Any]]()
     var shouldShowSearchResults = false
     var searchController: UISearchController!
+    var query = String()
+    
 
     //MARK:- ViewController
     
@@ -31,33 +31,16 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         configureSearchController() // Config Controller in VC
-        
-        loadListOfCountries()
-        
+                
     }
     
     //MARK:- VC Methods
 
-        func loadListOfCountries() {
-//            // Specify the path to the countries list file.
-//            let pathToFile = Bundle.main.path(forResource: "Country", ofType: "txt")
-//
-//            if let path = pathToFile {
-//                // Load the file contents as a string.
-//
-//                do{
-//                    let countriesString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
-//                    self.dataArray = countriesString.components(separatedBy: "\n")
-//                }
-//                catch{
-//                    print("try-catch error is catched!!")
-//                }
-//                tableView.reloadData()
-//            }
+    @objc func loadListOfCities(_ searchBar: UISearchBar) {
 
-            
             let session = URLSession.shared
-            let url = URL(string: "http://api.worldweatheronline.com/premium/v1/search.ashx?query=london&num_of_results=10&format=json&key=e6b8915fb40d45dd93b50608192412")!
+        let urlString = "http://api.worldweatheronline.com/premium/v1/search.ashx?num_of_results=10&format=json&key=e6b8915fb40d45dd93b50608192412&query=\(searchBar.text ?? "")"
+            let url = URL(string: urlString)!
 
             let task = session.dataTask(with: url) { data, response, error in
 
@@ -78,7 +61,14 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
 
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
+                    print(json)
                     
+                    guard json.value(forKeyPath: "search_api") != nil else {
+                        print("Unable to find any matching weather location to the query submitted!")
+                        return
+                    }
+
+
                     self.filteredArray = json.value(forKeyPath: "search_api.result") as! [[String:Any]]
                     
                     DispatchQueue.main.async {
@@ -86,7 +76,6 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
                         self.tableView.reloadData()
                     }
 
-                    print(json)
                 } catch {
                     print("JSON error: \(error.localizedDescription)")
                 }
@@ -98,7 +87,6 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
 
         func configureSearchController() {
             searchController = UISearchController(searchResultsController: nil)
-            searchController.dimsBackgroundDuringPresentation = false
             searchController.searchBar.placeholder = "Search here..."
             searchController.searchBar.delegate = self
             searchController.searchResultsUpdater = self
@@ -110,17 +98,20 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
     //MARK:- search update delegate
 
     public func updateSearchResults(for searchController: UISearchController){
-        let searchString = searchController.searchBar.text
-
+        let _ = searchController.searchBar.text
         tableView.reloadData()
     }
 
     //MARK:- search bar delegate
-    //MARK:-
 
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         shouldShowSearchResults = true
         tableView.reloadData()
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+       // to limit network activity, reload half a second after last key press.
+         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.loadListOfCities(_:)), object: searchBar)
+         perform(#selector(self.loadListOfCities(_:)), with: searchBar, afterDelay: 0.75)
     }
 
 
@@ -151,7 +142,7 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
 
         return cell
     }
-
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -188,14 +179,21 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        guard let weatherDetailViewController = segue.destination as? CityWeatherViewController,
+            let index = tableView.indexPathForSelectedRow?.row
+            else {
+                return
+        }
+//        weatherDetailViewController.city = cities[index]
+//        weatherDetailViewController.city = cities[index]
     }
-    */
-
+    
 }

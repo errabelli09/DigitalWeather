@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UdQ-nq-9J1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="znH-XX-AQ5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,6 +24,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ow3-ev-0sg" kind="show" id="o3m-lP-Kl9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -31,25 +34,88 @@
                             <outlet property="delegate" destination="UdQ-nq-9J1" id="dtX-Yr-xIu"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="9bs-nL-a11"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZd-bb-JIB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-439" y="-27"/>
+            <point key="canvasLocation" x="471.01449275362324" y="-27.455357142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--City Weather View Controller-->
         <scene sceneID="n1S-tR-JhY">
             <objects>
-                <viewController id="ow3-ev-0sg" sceneMemberID="viewController">
+                <viewController id="ow3-ev-0sg" customClass="CityWeatherViewController" customModule="SDPWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZPe-Dm-S6x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A75-rB-FjQ">
+                                <rect key="frame" x="186" y="481.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQY-QN-H2p">
+                                <rect key="frame" x="248" y="481.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bolt.horizontal.icloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2h5-nN-BT9">
+                                <rect key="frame" x="130" y="467" width="24" height="17"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMH-OF-0R6">
+                                <rect key="frame" x="186" y="444.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VQY-QN-H2p" firstAttribute="leading" secondItem="A75-rB-FjQ" secondAttribute="trailing" constant="20" id="0Pp-6E-Ef7"/>
+                            <constraint firstItem="A75-rB-FjQ" firstAttribute="leading" secondItem="2h5-nN-BT9" secondAttribute="trailing" constant="32" id="3PM-rr-904"/>
+                            <constraint firstItem="A75-rB-FjQ" firstAttribute="leading" secondItem="yMH-OF-0R6" secondAttribute="leading" id="6xP-6L-Hki"/>
+                            <constraint firstItem="A75-rB-FjQ" firstAttribute="top" secondItem="yMH-OF-0R6" secondAttribute="bottom" constant="16" id="WGG-P5-Y4M"/>
+                            <constraint firstItem="VQY-QN-H2p" firstAttribute="centerY" secondItem="A75-rB-FjQ" secondAttribute="centerY" id="glO-GE-KCg"/>
+                            <constraint firstItem="yMH-OF-0R6" firstAttribute="centerX" secondItem="R7m-yI-UPW" secondAttribute="centerX" id="hOd-Bl-qDP"/>
+                            <constraint firstItem="yMH-OF-0R6" firstAttribute="centerY" secondItem="R7m-yI-UPW" secondAttribute="centerY" constant="-20" id="p4w-ze-FkR"/>
+                            <constraint firstItem="2h5-nN-BT9" firstAttribute="centerY" secondItem="R7m-yI-UPW" secondAttribute="centerY" id="r2f-tg-a2k"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R7m-yI-UPW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ZZA-cj-0c9"/>
+                    <connections>
+                        <outlet property="currentHumidity" destination="VQY-QN-H2p" id="YOd-h2-fxP"/>
+                        <outlet property="currentTemperature" destination="A75-rB-FjQ" id="gfv-Sr-y5I"/>
+                        <outlet property="currentWeather" destination="yMH-OF-0R6" id="7kb-ab-kDf"/>
+                        <outlet property="weatherImageView" destination="2h5-nN-BT9" id="IlT-DE-5S9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VsV-go-BZm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288" y="-27"/>
+            <point key="canvasLocation" x="1197.1014492753625" y="-27.455357142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bO9-FQ-87H">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="znH-XX-AQ5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vk0-M3-1eg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UdQ-nq-9J1" kind="relationship" relationship="rootViewController" id="cJj-lI-dRU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BCo-wo-sIK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-439.13043478260875" y="-27.455357142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bolt.horizontal.icloud.fill" catalog="system" width="64" height="44"/>
+    </resources>
 </document>
