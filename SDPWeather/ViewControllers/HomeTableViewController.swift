@@ -15,6 +15,7 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
     var shouldShowSearchResults = false
     var searchController: UISearchController!
     var searchResults: [ResultsOfCities]?
+    var searchedCities = [[String: Any]]()
 
     // MARK: - ViewController
 
@@ -28,6 +29,16 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         configureSearchController() // Config Controller in VC
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let loadedCart = UserDefaults.standard.array(forKey: "searchedCities") as? [[String: Any]] {
+            print(loadedCart as Any)
+            searchedCities = loadedCart
+            
+            tableView.reloadData()
+        }
 
     }
 
@@ -81,6 +92,7 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
 //            task.resume()
 
         SearchManager.getCity(for: searchBar.text ?? "") { (searchCity) in
+            
             DispatchQueue.main.async {
                 self.searchResults = searchCity?.searchApi.result
                 print(self.searchResults as Any)
@@ -117,8 +129,11 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
        // to limit network activity, reload half a second after last key press.
-         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.loadListOfCities(_:)), object: searchBar)
-         perform(#selector(self.loadListOfCities(_:)), with: searchBar, afterDelay: 0.75)
+        if searchText.count > 2 {
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.loadListOfCities(_:)), object: searchBar)
+            perform(#selector(self.loadListOfCities(_:)), with: searchBar, afterDelay: 0.50)
+        }
+
     }
 
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -135,15 +150,35 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return searchResults?.count ?? 0
+        
+        if searchController.searchBar.text!.isEmpty {
+            if searchResults == nil {
+                return searchedCities.count
+            } else {
+                return searchResults?.count ?? 0
+            }
+        } else {
+            return searchResults?.count ?? 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        let  city = (searchResults?[indexPath.row].areaName[0].value)! + ", " + (searchResults?[indexPath.row].country[0].value)!
-
-        cell.textLabel?.text = city
+        if searchController.searchBar.text!.isEmpty {
+            if searchResults == nil {
+                let  city = "\(searchedCities[indexPath.row]["cityName"] ?? "")  , \(searchedCities[indexPath.row]["country"] ?? "")"
+                cell.textLabel?.text = city
+                return cell
+            } else {
+                let  city = (searchResults?[indexPath.row].areaName[0].value)! + ", " + (searchResults?[indexPath.row].country[0].value)!
+                cell.textLabel?.text = city
+                return cell
+            }
+        } else {
+            let  city = (searchResults?[indexPath.row].areaName[0].value)! + ", " + (searchResults?[indexPath.row].country[0].value)!
+            cell.textLabel?.text = city
+        }
 
         return cell
     }
@@ -162,8 +197,16 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
         }
 //        weatherDetailViewController.latLong = (searchResults?[index].latitude)! + "," + (searchResults?[index].longitude)!
 //        weatherDetailViewController.city = searchResults?[index].areaName[0].value
+        
+        if searchResults == nil {
+            weatherDetailViewController.cityDataDefaults = searchedCities[index]
+            weatherDetailViewController.searched = false
 
-        weatherDetailViewController.cityData = searchResults?[index]
+        } else {
+            weatherDetailViewController.cityData = searchResults?[index]
+            weatherDetailViewController.searched = true
+        }
+
     }
 
 }

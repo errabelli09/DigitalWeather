@@ -14,12 +14,13 @@
 		40665EDC23B4D214006387C4 /* CityWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40665EDB23B4D214006387C4 /* CityWeatherViewController.swift */; };
 		40665EDE23B4DFAC006387C4 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40665EDD23B4DFAC006387C4 /* Weather.swift */; };
 		40665EE823B5F3D6006387C4 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 40665EE723B5F3D6006387C4 /* .swiftlint.yml */; };
+		40665EEA23B60C16006387C4 /* SDPWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40665EE923B60C16006387C4 /* SDPWeatherTests.swift */; };
+		40665EEF23B6473C006387C4 /* ReusableClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40665EEE23B6473C006387C4 /* ReusableClasses.swift */; };
 		40A8BD5F23B23DB400119BA9 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A8BD5E23B23DB400119BA9 /* HomeTableViewController.swift */; };
 		40EB94FD23B22622007E961A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EB94FC23B22622007E961A /* AppDelegate.swift */; };
 		40EB950223B22622007E961A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40EB950023B22622007E961A /* Main.storyboard */; };
 		40EB950423B2263B007E961A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40EB950323B2263B007E961A /* Assets.xcassets */; };
 		40EB950723B2263B007E961A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40EB950523B2263B007E961A /* LaunchScreen.storyboard */; };
-		40EB951223B2263C007E961A /* SDPWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EB951123B2263C007E961A /* SDPWeatherTests.swift */; };
 		40EB951D23B2263C007E961A /* SDPWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EB951C23B2263C007E961A /* SDPWeatherUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,8 @@
 		40665EDB23B4D214006387C4 /* CityWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherViewController.swift; sourceTree = "<group>"; };
 		40665EDD23B4DFAC006387C4 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		40665EE723B5F3D6006387C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		40665EE923B60C16006387C4 /* SDPWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDPWeatherTests.swift; sourceTree = "<group>"; };
+		40665EEE23B6473C006387C4 /* ReusableClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableClasses.swift; sourceTree = "<group>"; };
 		40A8BD5E23B23DB400119BA9 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		40EB94F923B22622007E961A /* SDPWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDPWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40EB94FC23B22622007E961A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +59,6 @@
 		40EB950623B2263B007E961A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40EB950823B2263B007E961A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40EB950D23B2263C007E961A /* SDPWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDPWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		40EB951123B2263C007E961A /* SDPWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDPWeatherTests.swift; sourceTree = "<group>"; };
 		40EB951323B2263C007E961A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40EB951823B2263C007E961A /* SDPWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDPWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40EB951C23B2263C007E961A /* SDPWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDPWeatherUITests.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 			path = WeatherManagers;
 			sourceTree = "<group>";
 		};
+		40665EF023B6474A006387C4 /* ReusableFiles */ = {
+			isa = PBXGroup;
+			children = (
+				40665EEE23B6473C006387C4 /* ReusableClasses.swift */,
+			);
+			path = ReusableFiles;
+			sourceTree = "<group>";
+		};
 		40EB94F023B22621007E961A = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				40EB94FC23B22622007E961A /* AppDelegate.swift */,
+				40665EF023B6474A006387C4 /* ReusableFiles */,
 				40665ED623B4A0BA006387C4 /* WeatherManagers */,
 				40665ED323B49DA1006387C4 /* Models */,
 				40665ED223B49D65006387C4 /* ViewControllers */,
@@ -155,7 +166,7 @@
 		40EB951023B2263C007E961A /* SDPWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
-				40EB951123B2263C007E961A /* SDPWeatherTests.swift */,
+				40665EE923B60C16006387C4 /* SDPWeatherTests.swift */,
 				40EB951323B2263C007E961A /* Info.plist */,
 			);
 			path = SDPWeatherTests;
@@ -243,7 +254,7 @@
 					};
 					40EB950C23B2263C007E961A = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1130;
+						LastSwiftMigration = 1100;
 						TestTargetID = 40EB94F823B22622007E961A;
 					};
 					40EB951723B2263C007E961A = {
@@ -334,6 +345,7 @@
 				40EB94FD23B22622007E961A /* AppDelegate.swift in Sources */,
 				40665EDE23B4DFAC006387C4 /* Weather.swift in Sources */,
 				04B9400D23B52F61006932A0 /* SearchManager.swift in Sources */,
+				40665EEF23B6473C006387C4 /* ReusableClasses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40EB951223B2263C007E961A /* SDPWeatherTests.swift in Sources */,
+				40665EEA23B60C16006387C4 /* SDPWeatherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,7 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SDPWeather/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -528,7 +540,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SDPWeather/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -545,6 +557,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SDPWeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -554,6 +567,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.capgemini.SDPWeatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SDPWeather.app/SDPWeather";
@@ -565,6 +579,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SDPWeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

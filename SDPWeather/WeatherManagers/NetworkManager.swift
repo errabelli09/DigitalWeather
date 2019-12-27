@@ -20,7 +20,9 @@ class NetworkManager: NSObject {
     struct APIURL {
 
         static func cityCompletion(for search: String) -> String {
-            return "\(NetworkManager.Key.baseUrl)search.ashx?num_of_results=10&format=json&key=\(NetworkManager.Key.WWOKey)&query=\(search)"
+            let encodedUrl = "\(NetworkManager.Key.baseUrl)search.ashx?num_of_results=10&format=json&key=\(NetworkManager.Key.WWOKey)&query=\(search)".addingPercentEncoding(
+                withAllowedCharacters: .urlQueryAllowed)!
+            return encodedUrl
         }
 
         static func cityWeatherData(for placeID: String) -> String {
