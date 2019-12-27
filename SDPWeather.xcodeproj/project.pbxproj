@@ -13,6 +13,7 @@
 		40665ED823B4A0E6006387C4 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40665ED723B4A0E6006387C4 /* WeatherManager.swift */; };
 		40665EDC23B4D214006387C4 /* CityWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40665EDB23B4D214006387C4 /* CityWeatherViewController.swift */; };
 		40665EDE23B4DFAC006387C4 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40665EDD23B4DFAC006387C4 /* Weather.swift */; };
+		40665EE823B5F3D6006387C4 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 40665EE723B5F3D6006387C4 /* .swiftlint.yml */; };
 		40A8BD5F23B23DB400119BA9 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A8BD5E23B23DB400119BA9 /* HomeTableViewController.swift */; };
 		40EB94FD23B22622007E961A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EB94FC23B22622007E961A /* AppDelegate.swift */; };
 		40EB950223B22622007E961A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40EB950023B22622007E961A /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		40665ED723B4A0E6006387C4 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		40665EDB23B4D214006387C4 /* CityWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherViewController.swift; sourceTree = "<group>"; };
 		40665EDD23B4DFAC006387C4 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		40665EE723B5F3D6006387C4 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		40A8BD5E23B23DB400119BA9 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		40EB94F923B22622007E961A /* SDPWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDPWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40EB94FC23B22622007E961A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		40EB94F023B22621007E961A = {
 			isa = PBXGroup;
 			children = (
+				40665EE723B5F3D6006387C4 /* .swiftlint.yml */,
 				40EB94FB23B22622007E961A /* SDPWeather */,
 				40EB951023B2263C007E961A /* SDPWeatherTests */,
 				40EB951B23B2263C007E961A /* SDPWeatherUITests */,
@@ -177,6 +180,7 @@
 				40EB94F523B22622007E961A /* Sources */,
 				40EB94F623B22622007E961A /* Frameworks */,
 				40EB94F723B22622007E961A /* Resources */,
+				40665EDF23B5E044006387C4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -274,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40665EE823B5F3D6006387C4 /* .swiftlint.yml in Resources */,
 				40EB950723B2263B007E961A /* LaunchScreen.storyboard in Resources */,
 				40EB950423B2263B007E961A /* Assets.xcassets in Resources */,
 				40EB950223B22622007E961A /* Main.storyboard in Resources */,
@@ -295,6 +300,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		40665EDF23B5E044006387C4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		40EB94F523B22622007E961A /* Sources */ = {

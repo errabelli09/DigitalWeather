@@ -9,21 +9,21 @@
 import Foundation
 
 class SearchManager {
-    
-    static func getCity(for city: String, _ completion: @escaping (_ searchCity: searchResults?) -> Void) {
+
+    static func getCity(for city: String, _ completion: @escaping (_ searchCity: SearchResults?) -> Void) {
         guard let url = URL(string: NetworkManager.APIURL.cityCompletion(for: city)) else {
             completion(nil)
             return
         }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard let data = data else {
                 return
             }
-            
+
             do {
                 let decoder = JSONDecoder()
-                let searchResultsObject = try decoder.decode(searchResults.self, from: data)
+                let searchResultsObject = try decoder.decode(SearchResults.self, from: data)
                 completion(searchResultsObject)
             } catch {
                 print(error.localizedDescription)
@@ -31,5 +31,5 @@ class SearchManager {
             }
         }.resume()
     }
-    
+
 }

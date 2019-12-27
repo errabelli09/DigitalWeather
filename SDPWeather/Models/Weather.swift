@@ -8,27 +8,31 @@
 
 import Foundation
 
-struct dataWeather: Codable {
-    var data: dataWeatherTime
-    
+struct DataWeather: Codable {
+    var data: DataWeatherTime
 }
-struct dataWeatherTime: Codable {
-    
-    var current_condition: [currentWeatherCondition]
-    
+struct DataWeatherTime: Codable {
+    var currentCondition: [CurrentWeatherCondition]
+    enum CodingKeys: String, CodingKey {
+        case currentCondition = "current_condition"
+    }
 }
-struct currentWeatherCondition: Codable {
-    
-    var weatherIconUrl: [weatherImage]
-    var temp_C: String
+struct CurrentWeatherCondition: Codable {
+    var weatherIconUrl: [WeatherImage]
+    var temp: String
     var humidity: String
-    var weatherDesc: [currentWeatherDesc]
-    
-    struct currentWeatherDesc: Codable {
+    var weatherDesc: [CurrentWeatherDesc]
+    struct CurrentWeatherDesc: Codable {
         var value: String
     }
-    struct weatherImage: Codable {
+    struct WeatherImage: Codable {
         var value: String
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case temp = "temp_C"
+        case weatherIconUrl = "weatherIconUrl"
+        case humidity = "humidity"
+        case weatherDesc = "weatherDesc"
     }
 }
-    

@@ -8,23 +8,25 @@
 
 import Foundation
 
-struct searchResults: Codable{
-    var search_api: cityReuslts
+struct SearchResults: Codable {
+    var searchApi: CityReuslts
+    enum CodingKeys: String, CodingKey {
+        case searchApi = "search_api"
+    }
 }
-struct cityReuslts: Codable {
-    var result: [resultsOfCities]
+struct CityReuslts: Codable {
+    var result: [ResultsOfCities]
 }
-struct resultsOfCities: Codable {
-    var areaName: [area]
-    var country: [countryName]
+struct ResultsOfCities: Codable {
+    var areaName: [Area]
+    var country: [CountryName]
     var latitude: String
     var longitude: String
 
-    struct area: Codable {
+    struct Area: Codable {
         var value: String
     }
-    struct countryName: Codable {
+    struct CountryName: Codable {
         var value: String
     }
-
 }

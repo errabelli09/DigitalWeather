@@ -9,19 +9,15 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
-        
-    
-    //MARK:- Properties
-    
-    var filteredArray = [[String:Any]]()
+
+    // MARK: - Properties
+
     var shouldShowSearchResults = false
     var searchController: UISearchController!
-    var query = String()
-    var searchResults: [resultsOfCities]?
+    var searchResults: [ResultsOfCities]?
 
+    // MARK: - ViewController
 
-    //MARK:- ViewController
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,12 +26,12 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+
         configureSearchController() // Config Controller in VC
-                
+
     }
-    
-    //MARK:- VC Methods
+
+    // MARK: - VC Methods
 
     @objc func loadListOfCities(_ searchBar: UISearchBar) {
 
@@ -83,19 +79,18 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
 //            }
 //
 //            task.resume()
-        
+
         SearchManager.getCity(for: searchBar.text ?? "") { (searchCity) in
             DispatchQueue.main.async {
-                self.searchResults = searchCity?.search_api.result
+                self.searchResults = searchCity?.searchApi.result
                 print(self.searchResults as Any)
-                
+
                 self.tableView.reloadData()
 
             }
         }
-    
-    }
 
+    }
 
         func configureSearchController() {
             searchController = UISearchController(searchResultsController: nil)
@@ -106,15 +101,15 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
 
             tableView.tableHeaderView = searchController.searchBar
         }
-    
-    //MARK:- search update delegate
 
-    public func updateSearchResults(for searchController: UISearchController){
-        let _ = searchController.searchBar.text
+    // MARK: - search update delegate
+
+    public func updateSearchResults(for searchController: UISearchController) {
+        _ = searchController.searchBar.text
         tableView.reloadData()
     }
 
-    //MARK:- search bar delegate
+    // MARK: - search bar delegate
 
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         shouldShowSearchResults = true
@@ -126,12 +121,10 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
          perform(#selector(self.loadListOfCities(_:)), with: searchBar, afterDelay: 0.75)
     }
 
-
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         shouldShowSearchResults = false
         tableView.reloadData()
     }
-
 
     // MARK: - Table view data source
 
@@ -147,30 +140,30 @@ class HomeTableViewController: UITableViewController, UISearchResultsUpdating, U
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
+
         let  city = (searchResults?[indexPath.row].areaName[0].value)! + ", " + (searchResults?[indexPath.row].country[0].value)!
 
         cell.textLabel?.text = city
 
         return cell
     }
-    
 
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
+
         guard let weatherDetailViewController = segue.destination as? CityWeatherViewController,
             let index = tableView.indexPathForSelectedRow?.row
             else {
                 return
         }
-        weatherDetailViewController.latLong = (searchResults?[index].latitude)! + "," + (searchResults?[index].longitude)!
-        weatherDetailViewController.city = searchResults?[index].areaName[0].value
+//        weatherDetailViewController.latLong = (searchResults?[index].latitude)! + "," + (searchResults?[index].longitude)!
+//        weatherDetailViewController.city = searchResults?[index].areaName[0].value
+
+        weatherDetailViewController.cityData = searchResults?[index]
     }
-    
+
 }

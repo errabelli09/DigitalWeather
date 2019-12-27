@@ -9,41 +9,58 @@
 import UIKit
 
 class CityWeatherViewController: UIViewController {
-    
-    //MARK:- Outlets
+
+    // MARK: - Outlets
 
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var currentWeather: UILabel!
     @IBOutlet weak var currentTemperature: UILabel!
     @IBOutlet weak var currentHumidity: UILabel!
-    
-    //MARK:- Properties
+
+    // MARK: - Properties
 
     var latLong = String()
-    var city: String?
+    var cityData: ResultsOfCities?
 
-    
-    var weather: [currentWeatherCondition]?
+    var weather: [CurrentWeatherCondition]?
+
+    // MARK: - ViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    
-        self.title = city
-        getWeather()
+
+        self.title = cityData?.areaName[0].value
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        latLong = (cityData?.latitude)! + "," + (cityData?.longitude)!
+        getWeather()
+
+        var cityDataSave: [[String: Any]] = []
+        cityDataSave.append(["cityName": cityData?.areaName[0].value ?? "nope", "country": cityData?.country[0].value ?? "nope", "latLong": latLong])
+
+        UserDefaults.standard.set(cityDataSave, forKey: "searchedCities")
+
+        if let loadedCart = UserDefaults.standard.array(forKey: "searchedCities") as? [[String: Any]] {
+            print(loadedCart)  // [[cityName: 19.99, country: 1, latLong: A]
+            for item in loadedCart {
+                print(item["cityName"]  as? String ?? "nope")    // A, B
+                print(item["country"] as? String ?? "nope")
+                print(item["latLong"]   as? String ?? "nope")    // 19.99, 4.99
+            }
+        }
+    }
+    // MARK: - VC Methods
     private func getWeather() {
         WeatherManager.getWeather(for: latLong) { (weather) in
             DispatchQueue.main.async {
-                self.weather = weather?.data.current_condition
-                
+                self.weather = weather?.data.currentCondition
                 print(self.weather as Any)
-                
                 self.currentWeather.text = self.weather?[0].weatherDesc[0].value
                 self.currentHumidity.text = (self.weather?[0].humidity ?? "0") + "%"
-                self.currentTemperature.text = (self.weather?[0].temp_C ?? "0") + "°C"
+                self.currentTemperature.text = (self.weather?[0].temp ?? "0") + "°C"
                 let url = URL(string: (self.weather?[0].weatherIconUrl[0].value)!)
 
                 DispatchQueue.global().async {
@@ -55,7 +72,7 @@ class CityWeatherViewController: UIViewController {
             }
         }
     }
-    
+
     /*
     // MARK: - Navigation
 

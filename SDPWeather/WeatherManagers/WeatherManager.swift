@@ -9,21 +9,21 @@
 import Foundation
 
 class WeatherManager {
-    
-    static func getWeather(for cityLatLong: String, _ completion: @escaping (_ weather: dataWeather?) -> Void) {
+
+    static func getWeather(for cityLatLong: String, _ completion: @escaping (_ weather: DataWeather?) -> Void) {
         guard let url = URL(string: NetworkManager.APIURL.cityWeatherData(for: cityLatLong)) else {
             completion(nil)
             return
         }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard let data = data else {
                 return
             }
-            
+
             do {
-                let decoder = JSONDecoder()                
-                let weatherObject = try decoder.decode(dataWeather.self, from: data)
+                let decoder = JSONDecoder()
+                let weatherObject = try decoder.decode(DataWeather.self, from: data)
                 completion(weatherObject)
             } catch {
                 print(error.localizedDescription)
@@ -31,5 +31,5 @@ class WeatherManager {
             }
         }.resume()
     }
-    
+
 }
